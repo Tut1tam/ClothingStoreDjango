@@ -1,78 +1,93 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static '/css/style-index.css' %}" />
     <title>Main Page</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        font-family: sans-serif;
-        background-color: #333;
-        color: #fff;
-      }
-      .nav-bar {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        background-color: white;
-        padding: 0 20px;
-      }
-      .nav-bar ul {
-        display: flex;
-        list-style-type: none;
-      }
-      .nav-bar li:not(:last-child) {
-        margin-right: 20px;
-      }
-      .link {
-        text-decoration: none;
-        color: #333;
-        font-size: 20px;
-        font-weight: bold;
-        transition: color 0.3s ease-in-out;
-      }
-      .link:hover {
-        color: #fff;
-        background-color: #333;
-      }
-      .logo {
-        font-size: 30px;
-        font-weight: bold;
-        font-family: sans-serif;
-        color: white;
-      }
-      .wrapper {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 20px;
-        height: 100vh;
-        background-color: black;
-      }
-    </style>
   </head>
   <body>
-    <div class="wrapper">
-      <nav class="nav-bar">
-        <ul>
-          <li><a class="link" href="#">Home</a></li>
-          <li><a class="link" href="#">Catalog</a></li>
-          <li><a class="link" href="#">Contacts</a></li>
-          <li><a class="link" href="#">About</a></li>
-          <li><a class="link" href="#">Cart</a></li>
-          <li><a class="link" href="#">Login</a></li>
-          <li><a class="link" href="#">Register</a></li>
-        </ul>
-      </nav>
-      <div class="logo">
-        <h1>Clothing Store</h1>
+    <div class="component-2">
+      <img src="static/img/arrow.png" / width="170px" height="100px">
+    </div>
+    <div class="header-container">
+      <div class="header-left-part">
+        <h1>+1</h1>
+        <h1>project</h1>
       </div>
+      <div class="header-right-part">
+        <div class="dropdown">
+          <button class="dropbtn"><a>MENU</a></button>
+          <div class="dropdown-content">
+            <a href="#">Home</a>
+            <a href="#">Catalog</a>
+            <a href="#">Contacts</a>
+            <a href="#">About</a>
+            <a href="#">Cart</a>
+            <a href="#">Login</a>
+            <a href="#">Register</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main-container">
+      <div class="main-container-left">
+        <div class="main-container-left-up">
+          <h1>lab.</h1>
+        </div>
+        <div class="main-container-right-down">
+          <h1>00.1</h1>
+        </div>
+      </div>
+
+      <div class="main-container-right">
+        <div class="welcome-cont">
+          <div class="main-welocme">
+            <h4>/Welcome/</h4>
+            <hr />
+            <h4>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </h4>
+          </div>
+        </div>
+        <div class="main-container-right-left">
+          <div class="main-container-right-left-up">
+            <h4>/NEW/</h4>
+            <hr />
+            <h4>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </h4>
+          </div>
+          <div class="main-container-right-left-down">
+            <h4>/INFO/</h4>
+            <hr />
+            <h4>
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip.
+            </h4>
+          </div>
+        </div>
+        <div class="grey-block-image">
+          <img src="static/img/actor-main-page.png" / width="50%" height="auto">
+        </div>
+        <div class="main-container-right-right">
+          <div class="grey-block">
+            <div class="black-block">
+              <h1>NEW</h1>
+              <h1><font color="#a6a4a4">NEW</font></h1>
+              <h1><font color="#6b6a6a">NEW</font></h1>
+              <h1><font color="#454545">NEW</font></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="component-1">
+      <img src="static/img/arrow.png" / width="170px" height="100px">
     </div>
   </body>
 </html>
