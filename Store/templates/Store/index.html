@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Main Page</title>
+    <title>Home Page</title>
     <style>
       * {
         margin: 0;
@@ -46,6 +46,7 @@
         font-weight: bold;
         font-family: sans-serif;
         color: white;
+        padding: 0 20px;
       }
       .wrapper {
         display: flex;
@@ -64,7 +65,7 @@
           <li><a class="link" href="#">Home</a></li>
           <li><a class="link" href="#">Catalog</a></li>
           <li><a class="link" href="#">Contacts</a></li>
-          <li><a class="link" href="#">About</a></li>
+          <li><a class="link" href="{% url 'about' %}">About</a></li>
           <li><a class="link" href="#">Cart</a></li>
           <li><a class="link" href="#">Login</a></li>
           <li><a class="link" href="#">Register</a></li>
