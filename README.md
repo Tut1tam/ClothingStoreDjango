@@ -5,5 +5,3 @@
 - Backend:
   - Django
   - Postgres
-- Frontend:
-  - Bootstrap
