@@ -6,25 +6,22 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="{% static '/css/style-index.css' %}" />
-    <title>Main Page</title>
+    <title>Home Page</title>
   </head>
   <body>
-    <div class="component-2">
-      <img src="static/img/arrow.png" / width="170px" height="100px">
-    </div>
     <div class="header-container">
       <div class="header-left-part">
-        <h1>+1</h1>
-        <h1>project</h1>
+        <h1>Project</h1>
+        <h1>Clt</h1>
       </div>
       <div class="header-right-part">
         <div class="dropdown">
           <button class="dropbtn"><a>MENU</a></button>
           <div class="dropdown-content">
-            <a href="#">Home</a>
+            <a href="{% url 'index' %}">Home</a>
             <a href="#">Catalog</a>
-            <a href="#">Contacts</a>
-            <a href="#">About</a>
+            <a href="{% url 'contact' %}">Contacts</a>
+            <a href="{% url 'about' %}">About</a>
             <a href="#">Cart</a>
             <a href="#">Login</a>
             <a href="#">Register</a>
@@ -35,21 +32,22 @@
     <div class="main-container">
       <div class="main-container-left">
         <div class="main-container-left-up">
-          <h1>lab.</h1>
+          <h1>str</h1>
         </div>
         <div class="main-container-right-down">
           <h1>00.1</h1>
         </div>
       </div>
-
       <div class="main-container-right">
         <div class="welcome-cont">
           <div class="main-welocme">
             <h4>/Welcome/</h4>
             <hr />
             <h4>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Welcome to the clothing store "Project Clt STR"! We are glad
+              welcome you to our cozy world of fashion and style. We have you
+              you will find a wide selection of high quality and stylish clothes
+              that emphasize your individuality and help express your style.
             </h4>
           </div>
         </div>
@@ -58,16 +56,19 @@
             <h4>/NEW/</h4>
             <hr />
             <h4>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Clothing store "Project Clt STR" presents a new collection of
+              stylish and high quality clothing. We are pleased to offer our
+              customers unique models that will emphasize your individuality and
+              help you express your style.
             </h4>
           </div>
           <div class="main-container-right-left-down">
             <h4>/INFO/</h4>
             <hr />
             <h4>
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip.
+              Shop "Project Clt STR" is the place where you will find quality
+              and stylish clothes. We offer a wide range of models for men and
+              women, suitable for both everyday wear and special occasions.
             </h4>
           </div>
         </div>
@@ -85,9 +86,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="component-1">
-      <img src="static/img/arrow.png" / width="170px" height="100px">
     </div>
   </body>
 </html>

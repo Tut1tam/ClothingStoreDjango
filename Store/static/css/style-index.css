@@ -7,8 +7,8 @@
 
 
 body{
-    height: auto;
-    width: auto;
+    height: 100%;
+    width: 100%;
     margin: 0px;
     background: rgb(213,213,213);
     background: linear-gradient(90deg, rgb(35, 35, 35) 23%, rgb(213,213,213) 23%);
@@ -219,8 +219,8 @@ hr{
     position: fixed;
     z-index: 10;
     transform: rotate(45deg);
-    margin-left: 1400px;
-    margin-top: -70px;
+    margin-left: 350px;
+    margin-top: -10px;
 }
 
 .component-2{
