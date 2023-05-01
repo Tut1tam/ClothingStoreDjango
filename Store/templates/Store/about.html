@@ -1,0 +1,79 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static '/css/style-about.css' %}" />
+    <title>About us</title>
+  </head>
+  <body>
+    <div class="header-container">
+      <div class="header-left-part">
+        <h1>Project</h1>
+        <h1>Clt</h1>
+      </div>
+      <div class="header-right-part">
+        <div class="dropdown">
+          <button class="dropbtn"><a>MENU</a></button>
+          <div class="dropdown-content">
+            <a href="{% url 'index' %}">Home</a>
+            <a href="#">Catalog</a>
+            <a href="{% url 'contact' %}">Contacts</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="#">Cart</a>
+            <a href="#">Login</a>
+            <a href="#">Register</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main-container">
+      <div class="main-container-left">
+        <div class="main-container-left-up">
+          <h1>str</h1>
+        </div>
+        <div class="main-container-right-down">
+          <h1>00.1</h1>
+        </div>
+      </div>
+      <div class="main-container-right">
+        <div class="welcome-cont">
+          <div class="main-welocme">
+            <h4>/About our store/</h4>
+            <hr />
+            <h4>
+              The "Project Clt STR" store is a place where fashion and quality
+              are combined in one place. We strive to offer our customers the
+              very best in clothing. Our range includes both classic and modern
+              models that are suitable for any occasion. We are sure that
+              everyone will find something to their liking with us. We pride
+              ourselves on the high quality of our products and strive to
+              provide our customers with the best service. Come visit us and let
+              us help you create your unique look!
+            </h4>
+          </div>
+        </div>
+        <div>
+          <h1>Cloting</h1>
+          <h1>store</h1>
+        </div>
+        <div class="main-container-right-right">
+          <div class="grey-block-image">
+            <img src="static/img/actor-about-page.png" / width="49%"
+            height="auto">
+          </div>
+          <div class="grey-block">
+            <div class="black-block">
+              <h1>NEW</h1>
+              <h1><font color="#a6a4a4">NEW</font></h1>
+              <h1><font color="#6b6a6a">NEW</font></h1>
+              <h1><font color="#454545">NEW</font></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
