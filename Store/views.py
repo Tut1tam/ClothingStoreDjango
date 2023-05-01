@@ -5,12 +5,12 @@ def index(request):
     return render(request, "Store/index.html")
 
 
-# def about(request):
-#     return render(request, "Store/about.html")
+def about(request):
+    return render(request, "Store/about.html")
 
 
-# def contact(request):
-#     return render(request, "Store/contact.html")
+def contact(request):
+    return render(request, "Store/contact.html")
 
 
 # def faq(request):
