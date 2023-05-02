@@ -19,12 +19,17 @@
           <button class="dropbtn"><a>MENU</a></button>
           <div class="dropdown-content">
             <a href="{% url 'index' %}">Home</a>
-            <a href="#">Catalog</a>
+            <a href="{% url 'catalog' %}">Catalog</a>
             <a href="{% url 'contact' %}">Contacts</a>
             <a href="{% url 'about' %}">About</a>
-            <a href="#">Cart</a>
-            <a href="#">Login</a>
-            <a href="#">Register</a>
+            {% if user.is_anonymous %}
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'register' %}">Register</a>
+            {% else %}
+            <a href="{% url 'profile' %}">Profile</a>
+            <a href="{% url 'cart' %}">Cart</a>
+            <a href="{% url 'logout' %}">Logout</a>
+            {% endif %}
           </div>
         </div>
       </div>
@@ -44,14 +49,20 @@
             <h4>/Contacts/</h4>
             <hr />
             <h4>
-              The "Project Clt STR" store is a place where fashion and quality
-              are combined in one place. We strive to offer our customers the
-              very best in clothing. Our range includes both classic and modern
-              models that are suitable for any occasion. We are sure that
-              everyone will find something to their liking with us. We pride
-              ourselves on the high quality of our products and strive to
-              provide our customers with the best service. Come visit us and let
-              us help you create your unique look!
+              <table class="contacts-table">
+                <tr>
+                  <td>Phone:</td>
+                  <td>+49 (152) 1589-4164</td>
+                </tr>
+                <tr>
+                  <td>Email:</td>
+                  <td>projectcltstore@gmail.com</td>
+                </tr>
+                <tr>
+                  <td>Address:</td>
+                  <td>Frankfurt, Germany</td>
+                </tr>
+              </table>
             </h4>
           </div>
         </div>
