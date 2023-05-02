@@ -1,0 +1,101 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static '/css/style-index.css' %}" />
+    <title>Home Page</title>
+  </head>
+  <body>
+    <div class="header-container">
+      <div class="header-left-part">
+        <h1>Project</h1>
+        <h1>Clt</h1>
+      </div>
+      <div class="header-right-part">
+            <div class="dropdown">
+              <button class="dropbtn"><a>MENU</a></button>
+              <div class="dropdown-content">
+                <a href="{% url 'index' %}">Home</a>
+                <a href="{% url 'catalog' %}">Catalog</a>
+                <a href="{% url 'contact' %}">Contacts</a>
+                <a href="{% url 'about' %}">About</a>
+                {% if user.is_anonymous %}
+                <a href="{% url 'login' %}">Login</a>
+                <a href="{% url 'register' %}">Register</a>
+                {% else %}
+                <a href="{% url 'profile' %}">Profile</a>
+                <a href="{% url 'cart' %}">Cart</a>
+                <a href="{% url 'logout' %}">Logout</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main-container">
+      <div class="main-container-left">
+        <div class="main-container-left-up">
+          <h1>str</h1>
+        </div>
+        <div class="main-container-right-down">
+          <h1>00.1</h1>
+        </div>
+      </div>
+      <div class="cart">
+        <center><h2 style="margin-botto5em;">Корзина</h2></center>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Название товара</th>
+                <th scope="col">Цена</th>
+                <th scope="col">Количество</th>
+                <th scope="col">Сумма</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for order_item in object.items.all %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ order_item.item.name }}</td>
+                    <td>{{ order_item.item.price }}</td>
+                    <td>
+                        <a href="{% url 'remove_single_item_from_cart' order_item.item.pk %}">-</a>
+                        {{ order_item.quantity }}
+                        <a href="{% url 'add_to_cart' order_item.item.pk %}">+</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan='5'>Корзина пуста</td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                    <a class='btn btn-primary float-right' href='/'>Вернуться на главную</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            {% if object.get_total %}
+                <tr>
+                    <td colspan="4"><b>Итого:</b></td>
+                    <td><b>{{ object.get_total }} руб.</b></td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                    <a class='btn btn-primary float-start' href='/'>Вернуться на главную</a>
+                    <a class='btn btn-warning float-end ml-2' href=''>Оплатить</a>
+                    </td>
+                </tr>
+            {% endif %}
+            </tbody>
+        </table>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
