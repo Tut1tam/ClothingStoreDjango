@@ -29,7 +29,7 @@ class Product(models.Model):
     sex = models.CharField("Пол", choices=SEX_CHOICES, max_length=1)
     size = models.CharField("Размер", choices=SIZE_CHOICES, max_length=3)
     price = models.FloatField()
-    image = models.ImageField(blank=True, upload_to="static/products/")
+    image = models.ImageField(blank=True, upload_to="Store/static/products/")
 
     def __str__(self):
         return self.name
