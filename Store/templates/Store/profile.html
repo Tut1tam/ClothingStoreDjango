@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static '/css/style-index.css' %}" />
+    <title>Home Page</title>
+  </head>
+  <body>
+    <div class="header-container">
+      <div class="header-left-part">
+        <h1>Project</h1>
+        <h1>Clt</h1>
+      </div>
+      <div class="header-right-part">
+        <div class="dropdown">
+          <button class="dropbtn"><a>MENU</a></button>
+          <div class="dropdown-content">
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'catalog' %}">Catalog</a>
+            <a href="{% url 'contact' %}">Contacts</a>
+            <a href="{% url 'about' %}">About</a>
+            {% if user.is_anonymous %}
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'register' %}">Register</a>
+            {% else %}
+            <a href="{% url 'profile' %}">Profile</a>
+            <a href="{% url 'cart' %}">Cart</a>
+            <a href="{% url 'logout' %}">Logout</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main-container">
+      <div class="main-container-left">
+        <div class="main-container-left-up">
+          <h1>str</h1>
+        </div>
+        <div class="main-container-right-down">
+          <h1>00.1</h1>
+        </div>
+      </div>
+    </div>
+    <div class="user-info">
+      <table>
+        <tr>
+          <th>Username</th>
+          <th>Fullname</th>
+          <th>Last name</th>
+          <th>Email</th>
+          <th>Last login</th>
+        </tr>
+        <tr>
+          <td>{{ user.get_username }}</td>
+          <td>{{ user.get_fullname }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.last_login }}</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
