@@ -1,0 +1,83 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static '/css/style-index.css' %}" />
+    <title>Home Page</title>
+  </head>
+  <body>
+    <div class="header-container">
+      <div class="header-left-part">
+        <h1>Project</h1>
+        <h1>Clt</h1>
+      </div>
+      <div class="header-right-part">
+        <div class="header-right-part">
+          <div class="dropdown">
+            <button class="dropbtn"><a>MENU</a></button>
+            <div class="dropdown-content">
+              <a href="{% url 'index' %}">Home</a>
+              <a href="{% url 'catalog' %}">Catalog</a>
+              <a href="{% url 'contact' %}">Contacts</a>
+              <a href="{% url 'about' %}">About</a>
+              {% if user.is_anonymous %}
+              <a href="{% url 'login' %}">Login</a>
+              <a href="{% url 'register' %}">Register</a>
+              {% else %}
+              <a href="{% url 'profile' %}">Profile</a>
+              <a href="{% url 'cart' %}">Cart</a>
+              <a href="{% url 'logout' %}">Logout</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main-container">
+      <div class="main-container-left">
+        <div class="main-container-left-up">
+          <h1>str</h1>
+        </div>
+        <div class="main-container-right-down">
+          <h1>00.1</h1>
+        </div>
+      </div>
+      <div class="catalog">
+        {% if products%} {% for product in products %}
+        <div class="product">
+          <div class="product-image">
+            {% comment %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+            {% endcomment %}
+          </div>
+          <div class="product-name">
+            <h3>{{ product.name }}</h3>
+          </div>
+          <div class="product-price">
+            <h3>{{ product.price }}</h3>
+          </div>
+          <div class="product-category">
+            <h3>{{ product.category }}</h3>
+          </div>
+          <div class="product-size">
+            <h3>{{ product.size }}</h3>
+          </div>
+          <div class="product-button">
+            <a
+              href="{{product.get_add_to_cart_url}}"
+              class="btn btn-primary btn-lg"
+              role="button"
+              >Add to cart</a
+            >
+          </div>
+        </div>
+        {% endfor %} {% else %}
+        <h1>There are no products</h1>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>
