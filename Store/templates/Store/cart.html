@@ -45,55 +45,57 @@
           <h1>00.1</h1>
         </div>
       </div>
-      <div class="cart">
-        <center><h2 style="margin-botto5em;">Корзина</h2></center>
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Название товара</th>
-                <th scope="col">Цена</th>
-                <th scope="col">Количество</th>
-                <th scope="col">Сумма</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for order_item in object.items.all %}
-                <tr>
-                    <th scope="row">{{ forloop.counter }}</th>
-                    <td>{{ order_item.item.name }}</td>
-                    <td>{{ order_item.item.price }}</td>
-                    <td>
-                        <a href="{% url 'remove_single_item_from_cart' order_item.item.pk %}">-</a>
-                        {{ order_item.quantity }}
-                        <a href="{% url 'add_to_cart' order_item.item.pk %}">+</a>
-                    </td>
-                </tr>
-            {% empty %}
-                <tr>
-                    <td colspan='5'>Корзина пуста</td>
-                </tr>
-                <tr>
-                    <td colspan="5">
-                    <a class='btn btn-primary float-right' href='/'>Вернуться на главную</a>
-                    </td>
-                </tr>
-            {% endfor %}
-            {% if object.get_total %}
-                <tr>
-                    <td colspan="4"><b>Итого:</b></td>
-                    <td><b>{{ object.get_total }} руб.</b></td>
-                </tr>
-                <tr>
-                    <td colspan="5">
-                    <a class='btn btn-primary float-start' href='/'>Вернуться на главную</a>
-                    <a class='btn btn-warning float-end ml-2' href=''>Оплатить</a>
-                    </td>
-                </tr>
-            {% endif %}
-            </tbody>
-        </table>
-        </div>
+      <div class="main-container-right">
+        <div class="cart">
+          <center><h2 style="margin-botto5em;">Корзина</h2></center>
+          <table class="table">
+              <thead>
+              <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Название товара</th>
+                  <th scope="col">Цена</th>
+                  <th scope="col">Количество</th>
+                  <th scope="col">Сумма</th>
+              </tr>
+              </thead>
+              <tbody>
+              {% for order_item in object.items.all %}
+                  <tr>
+                      <th scope="row">{{ forloop.counter }}</th>
+                      <td>{{ order_item.item.name }}</td>
+                      <td>{{ order_item.item.price }}</td>
+                      <td>
+                          <a href="{% url 'remove_single_item_from_cart' order_item.item.pk %}">-</a>
+                          {{ order_item.quantity }}
+                          <a href="{% url 'add_to_cart' order_item.item.pk %}">+</a>
+                      </td>
+                  </tr>
+              {% empty %}
+                  <tr>
+                      <td colspan='5'>Корзина пуста</td>
+                  </tr>
+                  <tr>
+                      <td colspan="5">
+                      <a class='btn btn-primary float-right' href='/'>Вернуться на главную</a>
+                      </td>
+                  </tr>
+              {% endfor %}
+              {% if object.get_total %}
+                  <tr>
+                      <td colspan="4"><b>Итого:</b></td>
+                      <td><b>{{ object.get_total }} руб.</b></td>
+                  </tr>
+                  <tr>
+                      <td colspan="5">
+                      <a class='btn btn-primary float-start' href='/'>Вернуться на главную</a>
+                      <a class='btn btn-warning float-end ml-2' href=''>Оплатить</a>
+                      </td>
+                  </tr>
+              {% endif %}
+              </tbody>
+          </table>
+          </div>
+          </div>
         </div>
       </div>
     </div>
