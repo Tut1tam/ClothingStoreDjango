@@ -47,8 +47,8 @@
       </div>
       <div class="main-container-right">
         <div class="register-form">
-          <h1>Register</h1>
           <form action="{% url 'register' %}" method="post">
+            <h1>Register</h1>
             {% csrf_token %}
             <input type="text" name="username" placeholder="Username" />
             <input type="email" name="email" placeholder="Email" />
@@ -61,6 +61,7 @@
               placeholder="Confirm Password"
             />
             <button type="submit">Register</button>
+            <a href={% url "login" %}>Have an account?</a>
           </form>
         </div>
       </div>
