@@ -20,3 +20,4 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("Store.urls")),
 ]
+handler404 = "Store.views.error_404_view"
