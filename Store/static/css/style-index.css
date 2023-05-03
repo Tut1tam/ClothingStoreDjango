@@ -232,7 +232,7 @@ hr{
 
 }
 
-.login-form {
+/* .login-form {
     width: 300px;
     margin: 0 auto;
     font-size: 15px;
@@ -265,15 +265,122 @@ hr{
 
 .login-form button:hover {
     background-color: #ddd;
+} */
+
+
+.register-form  {
+    margin-left: 40%;
 }
 
 
-.register-form {
+.register-form form {
     width: 300px;
-    margin: 0 auto;
-    font-size: 15px;
-    margin-top: 100px;
-    color: #999;
+    height: auto;
     display: flex;
     flex-direction: column;
+    gap: 20px;
 }
+
+
+.register-form h1 {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.register-form input {
+    border: 1px solid rgb(35, 35, 35);
+    height: 30px;
+    background-color: #99999929;
+    font-family: Bruno-regular;
+
+}
+
+
+.register-form button {
+    width: 300px;
+    height: 40px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    background: linear-gradient(45deg,  rgb(75, 75, 75) 10%, rgb(35, 35, 35) 70%);
+    color: #f1f1f1;
+    font-family: Bruno-regular;
+
+}
+
+
+.register-form a {
+    font-size: 1em;
+    color: rgb(35, 35, 35);
+    font-family: Bruno-regular;
+}
+
+
+
+/* login styles */
+.login-form a {
+    font-size: 1em;
+    color: rgb(35, 35, 35);
+    font-family: Bruno-regular;
+}
+
+
+.login-form  {
+    margin-left: 40%;
+}
+
+
+.login-form form {
+    width: 300px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.login-form h1 {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.login-form input {
+    border: 1px solid rgb(35, 35, 35);
+    height: 30px;
+    background-color: #99999929;
+    font-family: Bruno-regular;
+
+}
+
+
+.login-form button {
+    width: 300px;
+    height: 40px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    background: linear-gradient(45deg,  rgb(75, 75, 75) 10%, rgb(35, 35, 35) 70%);
+    color: #f1f1f1;
+    font-family: Bruno-regular;
+
+}
+
+
+.login-form a {
+    font-size: 1em;
+    color: rgb(35, 35, 35);
+    font-family: Bruno-regular;
+}
+
+
+
+
+
+
+
+
+
+
+
