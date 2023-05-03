@@ -8,6 +8,7 @@ CATEGORY_CHOICES = (
     ("J", "Sweater"),
     ("SW", "Sweatshirt"),
     ("SH", "Shoes"),
+    ("A", "Accessories"),
     ("O", "Other"),
 )
 
@@ -30,6 +31,7 @@ class Product(models.Model):
     size = models.CharField("Размер", choices=SIZE_CHOICES, max_length=3)
     price = models.FloatField()
     image = models.ImageField(blank=True, upload_to="Store/static/products/")
+    description = models.TextField("Описание", max_length=500, blank=True)
 
     def __str__(self):
         return self.name
