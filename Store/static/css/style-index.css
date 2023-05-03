@@ -232,4 +232,48 @@ hr{
 
 }
 
+.login-form {
+    width: 300px;
+    margin: 0 auto;
+    font-size: 15px;
+    margin-top: 100px;
+    color: #999;
+}
 
+.login-form input {
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+    padding: 0 10px;
+    background: transparent;
+    border: 1px solid #ccc;
+    color: #999;
+    size: 10px;
+    font-size: larger;
+}
+
+.login-form button {
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+    padding: 0 10px;
+    background: transparent;
+    border: 1px solid #ccc;
+    color: #999;
+    cursor: pointer;
+}
+
+.login-form button:hover {
+    background-color: #ddd;
+}
+
+
+.register-form {
+    width: 300px;
+    margin: 0 auto;
+    font-size: 15px;
+    margin-top: 100px;
+    color: #999;
+    display: flex;
+    flex-direction: column;
+}
