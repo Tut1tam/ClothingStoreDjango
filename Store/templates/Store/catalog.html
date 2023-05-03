@@ -45,38 +45,42 @@
           <h1>00.1</h1>
         </div>
       </div>
-      <div class="catalog">
-        {% if products%} {% for product in products %}
-        <div class="product">
-          <div class="product-image">
+      <div class="main-container-right">
+        <div class="catalog" style="display: flex">
+          {% if products%} {% for product in products %}
+          <div class="product">
+            <div class="product-name">
+              <h3>{{ product.name }}</h3>
+            </div>
             {% comment %}
-            <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+            <div class="product-image">
+              <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+            </div>
             {% endcomment %}
+            <div class="product-price">
+              <h3>{{ product.price }}</h3>
+            </div>
+            <div class="product-category">
+              <h3>{{ product.category }}</h3>
+            </div>
+            <div class="product-size">
+              <h3>{{ product.size }}</h3>
+            </div>
+            {% if not user.is_anonymous %}
+            <div class="product-button">
+              <a
+                href="{{product.get_add_to_cart_url}}"
+                class="btn btn-primary btn-lg"
+                role="button"
+                >Add to cart</a
+              >
+            </div>
+            {% endif %}
           </div>
-          <div class="product-name">
-            <h3>{{ product.name }}</h3>
-          </div>
-          <div class="product-price">
-            <h3>{{ product.price }}</h3>
-          </div>
-          <div class="product-category">
-            <h3>{{ product.category }}</h3>
-          </div>
-          <div class="product-size">
-            <h3>{{ product.size }}</h3>
-          </div>
-          <div class="product-button">
-            <a
-              href="{{product.get_add_to_cart_url}}"
-              class="btn btn-primary btn-lg"
-              role="button"
-              >Add to cart</a
-            >
-          </div>
+          {% endfor %} {% else %}
+          <h1>There are no products</h1>
+          {% endif %}
         </div>
-        {% endfor %} {% else %}
-        <h1>There are no products</h1>
-        {% endif %}
       </div>
     </div>
   </body>
