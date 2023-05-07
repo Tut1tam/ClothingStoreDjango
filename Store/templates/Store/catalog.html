@@ -46,6 +46,16 @@
         </div>
       </div>
       <div class="main-container-right">
+        <div class = "catalog-categories">
+          <h1>Shirt</h1>
+          <h1>Pants</h1>
+          <h1>Sweater</h1>
+          <h1>Sweatshirt</h1>
+          <h1>Shoes</h1>
+          <h1>Accessories</h1>
+          <h1>Other</h1>
+        </div>
+        <hr>
         <div class="catalog">
           {% if products%} {% for product in products %}
           <div class="product-item">
@@ -54,10 +64,10 @@
             <div class="product-list">
               <h3>{{product.name}}</h3>
               <span class="price">{{product.price}}</span>
+              <span class="size">size: {{product.size}}</span>
               {%if not user.is_anonymous%}
               <a href="{{product.get_add_to_cart_url}}" class="button"
-                >Add to cart</a
-              >
+                >Add to cart</a>
               {%endif%}
               </a>
             </div>

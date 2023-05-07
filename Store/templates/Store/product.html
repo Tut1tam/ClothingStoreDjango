@@ -1,76 +1,75 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="{% static '/css/style-index.css' %}" />
-    <title>Home Page</title>
-  </head>
-  <body>
-    <div class="header-container">
-      <div class="header-left-part">
-        <h1>Project</h1>
-        <h1>Clt</h1>
+   <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="stylesheet" href="{% static '/css/style-index.css' %}" />
+      <title>Home Page</title>
+   </head>
+   <body>
+      <div class="header-container">
+         <div class="header-left-part">
+            <h1>Project</h1>
+            <h1>Clt</h1>
+         </div>
+         <div class="header-right-part">
+            <div class="dropdown">
+               <button class="dropbtn"><a>MENU</a></button>
+               <div class="dropdown-content">
+                  <a href="{% url 'index' %}">Home</a>
+                  <a href="{% url 'catalog' %}">Catalog</a>
+                  <a href="{% url 'contact' %}">Contacts</a>
+                  <a href="{% url 'about' %}">About</a>
+                  {% if user.is_anonymous %}
+                  <a href="{% url 'login' %}">Login</a>
+                  <a href="{% url 'register' %}">Register</a>
+                  {% else %}
+                  <a href="{% url 'profile' %}">Profile</a>
+                  <a href="{% url 'cart' %}">Cart</a>
+                  <a href="{% url 'logout' %}">Logout</a>
+                  {% endif %}
+               </div>
+            </div>
+         </div>
       </div>
-      <div class="header-right-part">
-        <div class="dropdown">
-          <button class="dropbtn"><a>MENU</a></button>
-          <div class="dropdown-content">
-            <a href="{% url 'index' %}">Home</a>
-            <a href="{% url 'catalog' %}">Catalog</a>
-            <a href="{% url 'contact' %}">Contacts</a>
-            <a href="{% url 'about' %}">About</a>
-            {% if user.is_anonymous %}
-            <a href="{% url 'login' %}">Login</a>
-            <a href="{% url 'register' %}">Register</a>
-            {% else %}
-            <a href="{% url 'profile' %}">Profile</a>
-            <a href="{% url 'cart' %}">Cart</a>
-            <a href="{% url 'logout' %}">Logout</a>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-      </div>
-    </div>
-    <div class="main-container">
+      <div class="main-container">
       <div class="main-container-left">
-        <div class="main-container-left-up">
-          <h1>str</h1>
-        </div>
-        <div class="main-container-right-down">
-          <h1>00.1</h1>
-        </div>
+         <div class="main-container-left-up">
+            <h1>str</h1>
+         </div>
+         <div class="main-container-right-down">
+            <h1>00.1</h1>
+         </div>
       </div>
       <div class="main-container-right">
-        <div class="about-product">
-          <div class="name">
-            <h1>product name - {{product.name}}</h1>
+      {% if product.image %}
+      <div class = "product-components">
+         <div class = "product-img-comp">
+            <img src="/{{product.image}}" / width="100%" height="100%"> 
+         </div>
+         {% endif %}
+         <div class = "product-name-comp">
+          <div class="product-name-price">
+            <h1>{{product.name}}</h1>
+            <h2>Price: {{product.price}}</h1>
           </div>
-          <div class="price">
-            <h1>Price: {{product.price}}</h1>
-          </div>
-          <div class="category">
+          <div class="product-size-category">
+            <h1>Size: {{product.size}}</h1>
             <h1>category - {{product.category}}</h1>
           </div>
-          {% if product.image %}
-          <div class="img">
-            <img src="/{{product.image}}" />
-          </div>
-          {% endif %}
-          <div class="size">
-            <h1>Size: {{product.size}}</h1>
-          </div>
-          {% if product.description %}
-          <div class="description">
-            <h1>Description: {{product.description}}</h1>
-          </div>
-          {% endif %}
+            {% if product.description %}
+            <h2>Description: {{product.description}}</h2>
+            {% endif %}
+            <div class = "main-btn-cont">
+              <div class= "product-components-btn">
+                <a href="{{product.get_add_to_cart_url}}">Add to cart</a>
+              </div>
+              <div class= "product-components-btn">
+                <a href="{% url 'catalog' %}">Back to catalog</a>
+              </div> 
+            </div>
         </div>
-        <a href="{{product.get_add_to_cart_url}}">Add to cart</a>
-        <a href="{% url 'catalog' %}">Back to catalog</a>
-    </div>
-  </body>
+      </div>
+   </body>
 </html>
