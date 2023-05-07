@@ -20,6 +20,8 @@ urlpatterns = [
         name="remove_single_item_from_cart",
     ),
     path("profile", views.profile, name="profile"),
+    path("edit_profile_page", views.edit_profile_page, name="edit_profile_page"),
+    path("edit_profile", views.edit_profile, name="edit_profile"),
 ]
 # add custom 404 page
 handler404 = "Store.views.error_404_view"
