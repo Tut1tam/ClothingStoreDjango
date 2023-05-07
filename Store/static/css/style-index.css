@@ -385,7 +385,11 @@ hr{
 /* style profile */
 
 .user-info {
-    margin-top: 0px;
+    margin-top: -70px;
+}
+
+.edit-profile-form {
+    margin-top: -70px;
 }
 
 label {
