@@ -47,15 +47,16 @@
       </div>
       <div class="main-container-right">
         <div class="cart">
-          <center><h2 style="margin-botto5em;">Корзина</h2></center>
+          <center><h2 style="margin-botto5em;">Cart</h2></center>
+          {% if object.items.all %}
           <table class="table">
               <thead>
               <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Название товара</th>
-                  <th scope="col">Цена</th>
-                  <th scope="col">Количество</th>
-                  <th scope="col">Сумма</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Count</th>
+                  <th scope="col">Total price</th>
               </tr>
               </thead>
               <tbody>
@@ -91,6 +92,9 @@
                       <a class='btn btn-warning float-end ml-2' href=''>Оплатить</a>
                       </td>
                   </tr>
+              {% endif %}
+              {% else %}
+                  <h1>Cart is empty</h1>
               {% endif %}
               </tbody>
           </table>
