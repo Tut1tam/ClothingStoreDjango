@@ -44,23 +44,33 @@
           <h1>00.1</h1>
         </div>
       </div>
-      <div class="product">
-        <div class="name">
-          <h1>{{product.name}}</h1>
+      <div class="main-container-right">
+        <div class="about-product">
+          <div class="name">
+            <h1>product name - {{product.name}}</h1>
+          </div>
+          <div class="price">
+            <h1>Price: {{product.price}}</h1>
+          </div>
+          <div class="category">
+            <h1>category - {{product.category}}</h1>
+          </div>
+          {% if product.image %}
+          <div class="img">
+            <img src="/{{product.image}}" />
+          </div>
+          {% endif %}
+          <div class="size">
+            <h1>Size: {{product.size}}</h1>
+          </div>
+          {% if product.description %}
+          <div class="description">
+            <h1>Description: {{product.description}}</h1>
+          </div>
+          {% endif %}
         </div>
-        <div class="price">
-          <h1>{{product.price}}</h1>
-        </div>
-        <div class="category">
-          <h1>{{product.category}}</h1>
-        </div>
-        <div class="img">
-          <img src="{{product.image}}" />
-        </div>
-        <div class="size">
-          <h1>{{product.size}}</h1>
-        </div>
-      </div>
+        <a href="{{product.get_add_to_cart_url}}">Add to cart</a>
+        <a href="{% url 'catalog' %}">Back to catalog</a>
     </div>
   </body>
 </html>
