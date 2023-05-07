@@ -23,8 +23,19 @@ def contact(request):
 
 
 def catalog(request):
+    categories = [
+        {"name": "All", "link": "/catalog", "id": ""},
+        {"name": "Shirt", "link": "/catalog/S", "id": "S"},
+        {"name": "Pants", "link": "/catalog/P", "id": "P"},
+        {"name": "Sweater", "link": "/catalog/J", "id": "J"},
+        {"name": "Sweatshirt", "link": "/catalog/SW", "id": "SW"},
+        {"name": "Shoes", "link": "/catalog/SH", "id": "SH"},
+        {"name": "Accessories", "link": "/catalog/A", "id": "A"},
+        {"name": "Other", "link": "/catalog/O", "id": "O"},
+    ]
+    category = ""
     products = Product.objects.all()
-    context = {"products": products}
+    context = {"products": products, "categories": categories, "category": category}
     return render(request, "Store/catalog.html", context=context)
 
 
@@ -185,3 +196,19 @@ def edit_profile(request):
             auth.login(request, user)
             return redirect("profile")
     return render(request, "Store/edit_profile.html")
+
+
+def catalog_category(request, category):
+    categories = [
+        {"name": "All", "link": "/catalog", "id": ""},
+        {"name": "Shirt", "link": "/catalog/S", "id": "S"},
+        {"name": "Pants", "link": "/catalog/P", "id": "P"},
+        {"name": "Sweater", "link": "/catalog/J", "id": "J"},
+        {"name": "Sweatshirt", "link": "/catalog/SW", "id": "SW"},
+        {"name": "Shoes", "link": "/catalog/SH", "id": "SH"},
+        {"name": "Accessories", "link": "/catalog/A", "id": "A"},
+        {"name": "Other", "link": "/catalog/O", "id": "O"},
+    ]
+    products = Product.objects.filter(category=category)
+    context = {"products": products, "category": category, "categories": categories}
+    return render(request, "Store/catalog.html", context=context)
