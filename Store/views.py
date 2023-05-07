@@ -102,7 +102,7 @@ def login_request(request):
         user = auth.authenticate(username=username, password=password)
 
         if user is not None:
-            messages.info(request, "Logged in successfully!")
+            auth.login(request, user)
             return redirect("index")
         else:
             return redirect("login")
