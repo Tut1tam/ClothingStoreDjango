@@ -120,10 +120,8 @@ def register(request):
 
         if password1 == password2:
             if auth.models.User.objects.filter(username=username).exists():
-                messages.error(request, "Username already exists.")
                 return redirect("register")
             elif auth.models.User.objects.filter(email=email).exists():
-                messages.error(request, "Email already exists.")
                 return redirect("register")
             else:
                 user = auth.models.User.objects.create_user(
@@ -145,7 +143,6 @@ def register(request):
 @login_required
 def logout_request(request):
     logout(request)
-    messages.info(request, "Logged out successfully!")
     return redirect("index")
 
 
