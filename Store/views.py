@@ -1,5 +1,5 @@
 import django.utils.timezone as timezone
-from django.contrib import auth, messages
+from django.contrib import auth
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
