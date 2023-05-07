@@ -31,6 +31,7 @@ def catalog(request):
 def product(request, product_id):
     product = Product.objects.get(id=product_id)
     context = {"product": product}
+    image = product.image
     return render(request, "Store/product.html", context=context)
 
 
@@ -48,11 +49,9 @@ def add_to_cart(request, pk):
         if order.items.filter(item__id=pk).exists():
             order_item.quantity += 1
             order_item.save()
-            messages.info(request, "This item quantity was updated.")
             return redirect("cart")
         else:
             order.items.add(order_item)
-            messages.info(request, "This item was added to your cart.")
             return redirect("cart")
     else:
         ordered_date = timezone.now()
@@ -61,7 +60,6 @@ def add_to_cart(request, pk):
             ordered_date=ordered_date,
         )
         order.items.add(order_item)
-        messages.info(request, "This item was added to your cart.")
         return redirect("cart")
 
 
@@ -80,13 +78,10 @@ def remove_single_item_from_cart(request, pk):
                 order_item.save()
             else:
                 order.items.remove(order_item)
-            messages.info(request, "Колличество товара обновлено")
             return redirect("cart")
         else:
-            messages.info(request, "Товар не в корзине")
             return redirect("product", pk=pk)
     else:
-        messages.info(request, "У вас нет активного заказа")
         return redirect("product", pk=pk)
 
 
@@ -97,7 +92,6 @@ class OrderSummaryView(LoginRequiredMixin, View):
             context = {"object": order}
             return render(self.request, "Store/cart.html", context)
         except ObjectDoesNotExist:
-            messages.warning(self.request, "У вас нет активного заказа")
             return redirect("/")
 
 
@@ -108,11 +102,9 @@ def login_request(request):
         user = auth.authenticate(username=username, password=password)
 
         if user is not None:
-            auth.login(request, user)
             messages.info(request, "Logged in successfully!")
             return redirect("index")
         else:
-            messages.error(request, "Invalid username or password.")
             return redirect("login")
     return render(request, "Store/login.html")
 
@@ -142,13 +134,10 @@ def register(request):
                     last_name=last_name,
                 )
                 user.save()
-                messages.info(request, "User created successfully!")
                 user = auth.authenticate(username=username, password=password1)
                 auth.login(request, user)
-                messages.info(request, "Logged in successfully!")
                 return redirect("index")
         else:
-            messages.error(request, "Passwords do not match.")
             return redirect("register")
     return render(request, "Store/register.html")
 
@@ -170,3 +159,32 @@ def profile(request):
 
 def error_404_view(request, exception):
     return render(request, "Store/404.html")
+
+
+@login_required
+def edit_profile_page(request):
+    user = request.user
+    context = {"user": user}
+    return render(request, "Store/edit_profile.html", context=context)
+
+
+@login_required
+def edit_profile(request):
+    user = auth.models.User.objects.get(username=request.user)
+    username = request.user
+    if request.method == "POST":
+        email = request.POST["email"]
+        first_name = request.POST["first_name"]
+        last_name = request.POST["last_name"]
+        password1 = request.POST["password1"]
+        password2 = request.POST["password2"]
+
+        if password1 == password2:
+            user.email = email
+            user.first_name = first_name
+            user.last_name = last_name
+            user.save()
+            user = auth.authenticate(username=username, password=password1)
+            auth.login(request, user)
+            return redirect("profile")
+    return render(request, "Store/edit_profile.html")
