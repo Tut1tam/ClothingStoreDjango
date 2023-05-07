@@ -43,24 +43,53 @@
           <h1>00.1</h1>
         </div>
       </div>
-    </div>
-    <div class="main-container-right">
-      <div class="user-info">
-        <table>
-          <tr>
-            <th>Username</th>
-            <th>Fullname</th>
-            <th>Last name</th>
-            <th>Email</th>
-            <th>Last login</th>
-          </tr>
-          <tr>
-            <td>{{ user.get_username }}</td>
-            <td>{{ user.get_fullname }}</td>
-            <td>{{ user.email }}</td>
-            <td>{{ user.last_login }}</td>
-          </tr>
-        </table>
+      <div class="main-container-right">
+        <div class="user-info login-form">
+          <h1>User info</h1>
+          <form>
+            <label for="username">Username:</label>
+            <input
+              class="user-info-text"
+              type="text"
+              name="username"
+              value="{{ user.username }}"
+              readonly
+            />
+            <label for="email">Email:</label>
+            <input
+              class="user-info-text"
+              type="text"
+              name="email"
+              value="{{ user.email }}"
+              readonly
+            />
+            <label for="first_name">First name:</label>
+            <input
+              class="user-info-text"
+              type="text"
+              name="first_name"
+              value="{{ user.first_name }}"
+              readonly
+            />
+            <label for="last_name">Last name:</label>
+            <input
+              class="user-info-text"
+              type="text"
+              name="last_name"
+              value="{{ user.last_name }}"
+              readonly
+            />
+            <label for="last_login">Last login:</label>
+            <input
+              class="user-info-text"
+              type="text"
+              name="last_login"
+              value="{{ user.last_login }}"
+              readonly
+            />
+            <a href="{% url 'edit_profile_page' %}">Edit profile</a>
+          </form>
+        </div>
       </div>
     </div>
   </body>
