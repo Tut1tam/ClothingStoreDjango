@@ -579,16 +579,20 @@ label {
     display: flex;
     justify-content: center;
     flex-direction: row;
-    gap: 42px;
+    gap: 30px;
     flex-wrap: wrap;
     margin-top: -20px;
     margin-bottom: 40px;
 }
 
+.catalog-categories .active {
+    color: rgb(35, 35, 35);
+}
 
-.catalog-categories h1{
+.catalog-categories a{
     font-size: 1.2em;
     color: #44444484;
+    text-decoration: none;
 }
 
 
