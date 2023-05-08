@@ -93,6 +93,9 @@
           </div>
           <div class="user-orders login-form">
             <h1>Orders</h1>
+            {% if not orders %}
+            <h5 style="text-align: center">You have no orders yet</h5>
+            {% endif %}
             <form>
               {% for order in orders %}
               <label for="order">Order:</label>

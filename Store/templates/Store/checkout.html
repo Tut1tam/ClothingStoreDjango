@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="stylesheet" href="{% static '/css/style-index.css' %}" />
+      <title>Home Page</title>
+   </head>
+   <body>
+      <div class="header-container">
+         <div class="header-left-part">
+            <h1>Project</h1>
+            <h1>Clt</h1>
+         </div>
+         <div class="header-right-part">
+            <div class="dropdown">
+               <button class="dropbtn"><a>MENU</a></button>
+               <div class="dropdown-content">
+                  <a href="{% url 'index' %}">Home</a>
+                  <a href="{% url 'catalog' %}">Catalog</a>
+                  <a href="{% url 'contact' %}">Contacts</a>
+                  <a href="{% url 'about' %}">About</a>
+                  {% if user.is_anonymous %}
+                  <a href="{% url 'login' %}">Login</a>
+                  <a href="{% url 'register' %}">Register</a>
+                  {% else %}
+                  <a href="{% url 'profile' %}">Profile</a>
+                  <a href="{% url 'cart' %}">Cart</a>
+                  <a href="{% url 'logout' %}">Logout</a>
+                  {% endif %}
+               </div>
+            </div>
+         </div>
+      </div>
+      </div>
+      </div>
+      <div class="main-container">
+         <div class="main-container-left">
+            <div class="main-container-left-up">
+               <h1>str</h1>
+            </div>
+            <div class="main-container-right-down">
+               <h1>00.1</h1>
+            </div>
+         </div>
+         <div class="main-container-right">
+            <div class="cart">
+                <div class="cart-logo">
+                <center>
+                    <h2 style="margin-bottom: 5em;">Checkout Order - #{{order.id}}</h2>
+                </center>
+                </div>
+                <div class="cart-items">
+                <div class="cart-item">
+                    <span class="cart-item-counter">#</span>
+                    <span class="cart-item-name">Product</span>
+                    <span class="cart-item-price">Price</span>
+                    <span class="cart-item-count">Quantity</span>
+                </div>
+                {% for order_item in order.items.all %}
+                <div class="cart-item">
+                    <span class="cart-item-counter">{{ forloop.counter }}</span>
+                    <span class="cart-item-name"><a href="/product/{{order_item.item.id}}">{{ order_item.item.name }}</a></span>
+                    <span class="cart-item-price">{{ order_item.item.price }} ₽</span>
+                    <span class="cart-item-count"><p class="count">{{ order_item.get_quantity }}</p></span>
+                </div>
+                <hr>
+                {% endfor %}
+                <div class="checkout-total">
+                    <div class="checkout-total-summary">
+                        <h2>Summary</h2>
+                        </div>
+                        <div class="checkout-total-price">
+                        <h1>Total:</h1>
+                        <h1>{{ order.get_total }}</h1>
+                        </div>
+                    </div>
+                    <div class="checkout-button">
+                        <form action="{% url 'checkout' %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit"> Checkout </button>
+                        </form>
+                        </div>
+         </div>
+      </div>
+   </body>
+</html>
