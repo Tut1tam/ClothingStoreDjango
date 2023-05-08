@@ -104,7 +104,7 @@ class OrderSummaryView(LoginRequiredMixin, View):
             context = {"object": order}
             return render(self.request, "Store/cart.html", context)
         except ObjectDoesNotExist:
-            return redirect("/")
+            return render(self.request, "Store/cart.html", context={"object": None})
 
 
 def login_request(request):
@@ -220,3 +220,16 @@ def catalog_category(request, category):
     products = Product.objects.filter(category=category)
     context = {"products": products, "category": category, "categories": categories}
     return render(request, "Store/catalog.html", context=context)
+
+
+@login_required
+def checkout(request):
+    if request.method == "POST":
+        user = request.user
+        order = Order.objects.get(user=user, ordered=False)
+        order.ordered = True
+        order.save()
+        return redirect("profile")
+    order = Order.objects.get(user=request.user, ordered=False)
+    context = {"order": order}
+    return render(request, "Store/checkout.html", context=context)
