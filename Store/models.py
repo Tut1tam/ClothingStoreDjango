@@ -78,5 +78,11 @@ class Order(models.Model):
             total += order_item.get_total_item_price()
         return total
 
+    def get_items(self):
+        return self.items.all()
+
+    def get_items_to_str(self):
+        return str(self.items.all())
+
     def __str__(self):
         return self.user.username

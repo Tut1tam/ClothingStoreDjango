@@ -44,51 +44,120 @@
         </div>
       </div>
       <div class="main-container-right">
-        <div class="user-info login-form">
-          <h1>User info</h1>
-          <form>
-            <label for="username">Username:</label>
-            <input
-              class="user-info-text"
-              type="text"
-              name="username"
-              value="{{ user.username }}"
-              readonly
-            />
-            <label for="email">Email:</label>
-            <input
-              class="user-info-text"
-              type="text"
-              name="email"
-              value="{{ user.email }}"
-              readonly
-            />
-            <label for="first_name">First name:</label>
-            <input
-              class="user-info-text"
-              type="text"
-              name="first_name"
-              value="{{ user.first_name }}"
-              readonly
-            />
-            <label for="last_name">Last name:</label>
-            <input
-              class="user-info-text"
-              type="text"
-              name="last_name"
-              value="{{ user.last_name }}"
-              readonly
-            />
-            <label for="last_login">Last login:</label>
-            <input
-              class="user-info-text"
-              type="text"
-              name="last_login"
-              value="{{ user.last_login }}"
-              readonly
-            />
-            <a href="{% url 'edit_profile_page' %}">Edit profile</a>
-          </form>
+        <div class="user-page">
+          <div class="user-info login-form">
+            <h1>User info</h1>
+            <form>
+              <label for="username">Username:</label>
+              <input
+                class="user-info-text"
+                type="text"
+                name="username"
+                value="{{ user.username }}"
+                readonly
+              />
+              <label for="email">Email:</label>
+              <input
+                class="user-info-text"
+                type="text"
+                name="email"
+                value="{{ user.email }}"
+                readonly
+              />
+              <label for="first_name">First name:</label>
+              <input
+                class="user-info-text"
+                type="text"
+                name="first_name"
+                value="{{ user.first_name }}"
+                readonly
+              />
+              <label for="last_name">Last name:</label>
+              <input
+                class="user-info-text"
+                type="text"
+                name="last_name"
+                value="{{ user.last_name }}"
+                readonly
+              />
+              <label for="last_login">Last login:</label>
+              <input
+                class="user-info-text"
+                type="text"
+                name="last_login"
+                value="{{ user.last_login }}"
+                readonly
+              />
+              <a href="{% url 'edit_profile_page' %}">Edit profile</a>
+            </form>
+          </div>
+          <div class="user-orders login-form">
+            <h1>Orders</h1>
+            <form>
+              {% for order in orders %}
+              <label for="order">Order:</label>
+              <label for="order_id">Order_id</label>
+              <input
+                class="user-info-text"
+                type="text"
+                name="order"
+                value="{{ order.id }}"
+                readonly
+              />
+              <label for="start_date">Order start date:</label>
+              <input
+                class="user-info-text"
+                type="text"
+                name="order"
+                value="{{ order.start_date }}"
+                readonly
+              />
+              <label for ="ordered_date">Order ordered date:</label>
+              <input 
+                class="user-info-text"
+                type="text"
+                name="order"
+                value="{{ order.ordered_date }}"
+                readonly
+              />
+              <label for="ordered">Order ordered:</label>
+              <input
+                class="user-info-text"
+                type="text"
+                name="order"
+                value="{{ order.ordered }}"
+                readonly
+              />
+              <label for="order_items">Order items:</label>
+              {% for order_item in order.items.all %}
+              <label for="order_item">Order item:</label>
+              <label for="order_item_id">Order item name:</label>
+              <input
+                class="user-info-text"
+                type="text"
+                name="order_item"
+                value="{{ order_item.item.name }}"
+                readonly
+              />
+              <label for="order_item_quantity">Order item quantity:</label>
+              <input
+                class="user-info-text"
+                type="text"
+                name="order_item_quantity"
+                value="{{ order_item.quantity }}"
+                readonly
+              />
+              <label for="order_item_price">Order item price:</label>
+              <input
+                class="user-info-text"
+                type="text"
+                name="order_item_price"
+                value="{{ order_item.item.price }}"
+                readonly
+              />
+              {% endfor %}
+              {% endfor %}
+            </form>
         </div>
       </div>
     </div>

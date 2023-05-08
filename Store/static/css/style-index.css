@@ -384,8 +384,13 @@ hr{
 
 /* style profile */
 
-.user-info {
-    margin-top: -70px;
+
+
+.user-page {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
 }
 
 .edit-profile-form {

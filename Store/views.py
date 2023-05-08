@@ -159,9 +159,14 @@ def logout_request(request):
 
 @login_required
 def profile(request):
+    user = request.user
+    orders = Order.objects.filter(user=user, ordered=True)
+    order_items = OrderItem.objects.filter(user=user, ordered=True)
+    context = {"orders": orders, "order_items": order_items, "user": user}
     return render(
         request,
         "Store/profile.html",
+        context=context,
     )
 
 
