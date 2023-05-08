@@ -7,7 +7,7 @@ on:
 
 env:
   JOB_STARTED_AT: ${{ github.event.created_at }}
-  CR_REGISTRY: Tut1tam
+  CR_REGISTRY: tut1tam
   CR_IMAGE_BACKEND: clt-store
 
 jobs:
