@@ -606,3 +606,112 @@ label {
 }
 
 
+/* cart style */
+
+.cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 900px;
+    height: auto;
+    border-radius: 20px;
+    background-color: #44444432;
+    border: 1px solid rgba(0, 0, 0, 0.162);
+    font-family: Bruno-regular;
+}
+
+.cart .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 20px;
+    padding: 5px;
+    font-size: 1.8em;
+    width: auto;
+    height: auto;
+    background: linear-gradient(45deg,  rgb(75, 75, 75) 10%, rgb(35, 35, 35) 70%);
+    color: #f1f1f1;
+    font-family: Bruno-regular;
+}
+
+.cart .count-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    
+    padding: 5px;
+    font-size: 1.8em;
+    width: 25px;
+    height: 25px;
+    background: linear-gradient(45deg,  rgb(75, 75, 75) 10%, rgb(35, 35, 35) 70%);
+    color: #f1f1f1;
+    font-family: Bruno-regular;
+}
+
+.cart a {
+    text-decoration: none;
+    color:rgb(35, 35, 35);
+    font-size: 1.2em;
+}
+
+.cart-items {
+    margin-top: -100px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cart-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 100px;
+}
+
+.cart-total {
+    display: flex;
+    flex-direction: row;
+    width: 111%;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.cart-item-count {
+    display: flex;
+    flex-direction: row;
+    width: 10px;
+    gap : 5px;
+    align-items: center;
+}
+
+.cart-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 30px;
+}
+
+.cart-empty{
+    margin-top: -100px;
+    font-size: 1em;
+    color: rgb(35, 35, 35);
+    font-family: Bruno-regular;
+    margin-bottom: 100px;
+}
+
+.cart-total-price {
+    color: rgb(35, 35, 35);
+    font-family: Bruno-regular;
+}
+
+.cart hr {
+    border: 1px solid rgba(35, 35, 35, 0.227);
+    margin-top: -45px;
+    width: 113%;
+}
