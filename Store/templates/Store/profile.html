@@ -98,15 +98,7 @@
             {% endif %}
             <form>
               {% for order in orders %}
-              <label for="order">Order:</label>
-              <label for="order_id">Order_id</label>
-              <input
-                class="user-info-text"
-                type="text"
-                name="order"
-                value="{{ order.id }}"
-                readonly
-              />
+              <label for="order">Order: #{{ order.id }}</label>
               <label for="start_date">Order start date:</label>
               <input
                 class="user-info-text"
@@ -156,6 +148,14 @@
                 type="text"
                 name="order_item_price"
                 value="{{ order_item.item.price }}"
+                readonly
+              />
+              <label for="order_item_total_price">Order item total price:</label>
+              <input
+                class="user-info-text"
+                type="text"
+                name="order_item_total_price"
+                value="{{ order.get_total }}"
                 readonly
               />
               {% endfor %}
