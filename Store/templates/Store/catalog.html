@@ -55,7 +55,7 @@
         <div class="catalog">
           {% if products%} {% for product in products %}
           <div class="product-item">
-            <a href="./product/{{product.id}}">
+            <a href="{% url 'product' product.id %}">
             <img src="/{{product.image}}" />
             <div class="product-list">
               <h3>{{product.name}}</h3>
