@@ -40,9 +40,10 @@ def catalog(request):
 
 
 def product(request, product_id):
+    if Product.objects.filter(id=product_id).exists() is False:
+        return render(request, "Store/404.html")
     product = Product.objects.get(id=product_id)
     context = {"product": product}
-    image = product.image
     return render(request, "Store/product.html", context=context)
 
 
@@ -214,6 +215,8 @@ def catalog_category(request, category):
         {"name": "Accessories", "link": "/catalog/A", "id": "A"},
         {"name": "Other", "link": "/catalog/O", "id": "O"},
     ]
+    if category not in ["S", "P", "J", "SW", "SH", "A", "O", ""]:
+        return render(request, "Store/404.html")
     products = Product.objects.filter(category=category)
     context = {"products": products, "category": category, "categories": categories}
     return render(request, "Store/catalog.html", context=context)

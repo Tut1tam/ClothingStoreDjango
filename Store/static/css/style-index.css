@@ -720,3 +720,23 @@ label {
     margin-top: -45px;
     width: 113%;
 }
+
+
+.page-404 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.page-404 h1 {
+    font-size: 5em;
+    color: rgb(35, 35, 35);
+    font-family: Bruno-regular;
+}
+
+.main-404-2 h3 {
+    font-size: 1.5em;
+    color: rgb(35, 35, 35);
+    font-family: Bruno-regular;
+}
