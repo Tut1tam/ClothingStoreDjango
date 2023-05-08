@@ -62,9 +62,11 @@
             <h2>Description: {{product.description}}</h2>
             {% endif %}
             <div class = "main-btn-cont">
+               {% if not user.is_anonymous %}
               <div class= "product-components-btn">
                 <a href="{{product.get_add_to_cart_url}}">Add to cart</a>
               </div>
+               {% endif %}
               <div class= "product-components-btn">
                 <a href="{% url 'catalog' %}">Back to catalog</a>
               </div> 
