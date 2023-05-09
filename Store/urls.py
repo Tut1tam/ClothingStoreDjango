@@ -1,7 +1,6 @@
 from django.urls import path
 
 from . import views
-from .views import OrderSummaryView
 
 urlpatterns = [
     path("", views.index, name="index"),
@@ -9,7 +8,7 @@ urlpatterns = [
     path("contact", views.contact, name="contact"),
     path("catalog", views.catalog, name="catalog"),
     path("product/<int:product_id>", views.product, name="product"),
-    path("cart", OrderSummaryView.as_view(), name="cart"),
+    path("cart", views.cart, name="cart"),
     path("login", views.login_request, name="login"),
     path("logout", views.logout_request, name="logout"),
     path("register", views.register, name="register"),
