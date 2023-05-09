@@ -63,17 +63,17 @@
                     <span class="cart-item-counter">{{ forloop.counter }}</span>
                     <span class="cart-item-name"><a href="/product/{{order_item.item.id}}">{{ order_item.item.name }}</a></span>
                     <span class="cart-item-price">{{ order_item.item.price }} ₽</span>
-                    <span class="cart-item-count"><p class="count">{{ order_item.get_quantity }}</p></span>
+                    <span class="cart-item-count"><p class="count"> {{ order_item.get_quantity }}</p></span>
                 </div>
                 <hr>
                 {% endfor %}
                 <div class="checkout-total">
                     <div class="checkout-total-summary">
-                        <h2>Summary</h2>
+                        <h2>Summary:</h2>
                         </div>
                         <div class="checkout-total-price">
                         <h1>Total:</h1>
-                        <h1>{{ order.get_total }}</h1>
+                        <h1>{{ order.get_total }} Rub.</h1>
                         </div>
                     </div>
                     <div class="checkout-button">
