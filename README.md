@@ -10,3 +10,6 @@
 - Frontend:
   - HTML5
   - CSS
+- Deploy/DevOps:
+  - Github Actions
+  - Docker
