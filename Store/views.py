@@ -1,13 +1,25 @@
 import django.utils.timezone as timezone
+from django.conf import settings
 from django.contrib import auth
 from django.contrib.auth import logout
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404, redirect, render
-from django.views import View
 
 from .models import Order, OrderItem, Product
+
+
+def anonymous_required(function=None, redirect_url="start"):
+    if not redirect_url:
+        redirect_url = settings.LOGIN_REDIRECT_URL
+
+    actual_decorator = user_passes_test(
+        lambda u: u.is_anonymous, login_url=redirect_url
+    )
+
+    if function:
+        return actual_decorator(function)
+    return actual_decorator
 
 
 def index(request):
@@ -97,16 +109,17 @@ def remove_single_item_from_cart(request, pk):
         return redirect("product", pk=pk)
 
 
-class OrderSummaryView(LoginRequiredMixin, View):
-    def get(self, *args, **kwargs):
-        try:
-            order = Order.objects.get(user=self.request.user, ordered=False)
-            context = {"object": order}
-            return render(self.request, "Store/cart.html", context)
-        except ObjectDoesNotExist:
-            return render(self.request, "Store/cart.html", context={"object": None})
+@login_required
+def cart(request):
+    try:
+        order = Order.objects.get(user=request.user, ordered=False)
+        context = {"object": order}
+        return render(request, "Store/cart.html", context)
+    except ObjectDoesNotExist:
+        return render(request, "Store/cart.html", context={"object": None})
 
 
+@anonymous_required(redirect_url="index")
 def login_request(request):
     if request.method == "POST":
         username = request.POST["username"]
@@ -115,12 +128,13 @@ def login_request(request):
 
         if user is not None:
             auth.login(request, user)
-            return redirect("index")
+            return redirect("catalog")
         else:
             return redirect("login")
     return render(request, "Store/login.html")
 
 
+@anonymous_required(redirect_url="index")
 def register(request):
     if request.method == "POST":
         username = request.POST["username"]
